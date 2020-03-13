@@ -1,0 +1,177 @@
+//---------------------------------------------------------------------------
+//
+//Default keymaps from FDR and FS19 these may or may not dircectly be used but are are for referance and will be use where posable to keep future change compatable.
+//Keybinds will be useing TARGETS USB command to be cross local compatable see bottom of file for english key conversion.
+//
+//  KEYBIND SHOULD NOT BE CHANGED UNLESS YOU RUN A NON-STANDARD FS19 LAYOUT. IE YOU CHANGE THE DEFAULT KEYBOARD BINDS
+//
+//---------------------------------------------------------------------------
+
+//FDR recomended keymaps
+//Left joysticks keymaps
+//TS1
+define TriggerJoyL USB[0x05] //b key for fs19 for tool function 1 power unpower device selected
+//TS4
+define TopRightJoyL USB[0x0F] //l key for fs19 for fasten/unfasten tension belts 
+//TS3
+define TopLeftJoyL L_SHIFT+L_CTL+USB[0x0D] //L_Shift+L_Ctrl+j for fs19 rotate crane tool right 
+//TS2
+define TopMiddleJoyL L_SHIFT+L_CTL+USB[0x11] //L_Shift+L_Ctrl+n for fs19 rotate crane tool left
+//H1U
+define HatUpJoyL L_SHIFT+USB[0x0D] //l_shift+j for fs19 extend crane arm
+//H1D
+define HatDownJoyL L_SHIFT+USB[0x11] //l_shift+n for fs19 extend crane arm
+
+//Right joystick keymaps
+//TS1
+define TriggerJoyR USB[0x1B] //x key for fs19 for tool function 2
+//TS4
+define TopRightJoyR L_SHIFT+USB[0x0E] //L_Shift+k for fs19 open frontloader tool
+define TopRightJoyRAdd L_SHIFT+L_CTL+USB[0x0E] //L_Shift+L_Ctrl+k for fs19 open crane tool
+//TS3
+define TopLeftJoyR USB[0x12] //o key press for toggle pipe
+define TopLeftJotRAdd USB[0x1c] //y key press for tool function 3
+//TS2
+define TopMiddleJoyR L_SHIFT+USB[0x10] //L_Shift+m for fs19 close frontloader tool
+define TopMiddleJoyRAdd L_SHIFT+L_CTL+USB[0x10] //L_Shift+L_Ctrl+m for fs19 open crane tool
+
+//FS19 Keybinds used in Scripting and assigned 
+define MachineForward USB[0x1A] //w key to add forward motion to device that you are piloting for fs19
+define MachineStopReverse USB[0x16] //s key to add reverse and stop motion to device you are piloting for fs19
+define EngineStart USB[0x28] //Enter or return for fs19 to start engines or menu interaction
+define ParkVehicle L_CTL+USB[0x17] //L_CTL+T for park vehicle mod from fs19 modhub
+define Strobes USB[0x4A] //home key to activate strobes for FS19
+define Lights USB[0x09] //f key to turn on lights for fs19
+define ToolLowerLift USB[0x19] //v key to lower/lift tool selected for fs19
+define CruiseControl USB[0x20] //3 key to toggle cruise control for fs19
+define CameraCycle USB[0x06] //c key to cycle the camera control for fs19
+
+//---------------------------------------------------------------------------
+//
+// -- DX128 Notes --
+// 
+// Here is additional defines for 120 DX buttons, they just follow the standard
+// DX defines from defines.tmh which stop to DX32	with value 3031
+//
+//---------------------------------------------------------------------------
+define DX33			3032
+define DX34			3033
+define DX35			3034
+define DX36			3035
+define DX37			3036
+define DX38			3037
+define DX39			3038
+define DX40			3039
+define DX41			3040
+define DX42			3041
+define DX43			3042
+define DX44			3043
+define DX45			3044
+define DX46			3045
+define DX47			3046
+define DX48			3047
+define DX49			3048
+define DX50			3049
+define DX51			3050
+define DX52			3051
+define DX53			3052
+define DX54			3053
+define DX55			3054
+define DX56			3055
+define DX57			3056
+define DX58			3057
+define DX59			3058
+define DX60			3059
+define DX61			3060
+define DX62			3061
+define DX63			3062
+define DX64			3063
+define DX65			3064
+define DX66			3065
+define DX67			3066
+define DX68			3067
+define DX69			3068
+define DX70			3069
+define DX71			3070
+define DX72			3071
+define DX73			3072
+define DX74			3073
+define DX75			3074
+define DX76			3075
+define DX77			3076
+define DX78			3076
+define DX79			3078
+define DX80			3079
+define DX81			3080
+define DX82			3081
+define DX83			3082
+define DX84			3083
+define DX85			3084
+define DX86			3085
+define DX87			3086
+define DX88			3087
+define DX89			3088
+define DX90			3089
+define DX91			3090
+define DX92			3091
+define DX93			3092
+define DX94			3093
+define DX95			3094
+define DX96			3095
+define DX97			3096
+define DX98			3097
+define DX99			3098
+define DX100		3099
+define DX101		3100
+define DX102		3101
+define DX103		3102
+define DX104		3103
+define DX105		3104
+define DX106		3105
+define DX107		3106
+define DX108		3107
+define DX109		3108
+define DX110		3109
+define DX111		3110
+define DX112		3111
+define DX113		3112
+define DX114		3113
+define DX115		3114
+define DX116		3115
+define DX117		3116
+define DX118		3117
+define DX119		3118
+define DX120		3119
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// REFERENCE: USB KEY DEFINITIONS //																															//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//																																								//
+//	A	USB[0x04]		1	USB[0x1E]		ENTER		USB[0x28]		PRINT SCREEN	USB[0x46]		NUMPAD /	USB[0x54]		F1		USB[0x3A]			//
+//	B	USB[0x05]		2	USB[0x1F]		ESCAPE		USB[0x29]		SCROLL LOCK		USB[0x47]		NUMPAD *	USB[0x55]		F2		USB[0x3B]			//
+//	C	USB[0x06]		3	USB[0x20]		BACKSPACE	USB[0x2A]		PAUSE/BREAK		USB[0x48]		NUMPAD -	USB[0x56]		F3		USB[0x3C]			//
+//	D	USB[0x07]		4	USB[0x21]		TAB			USB[0x2B]		NUM LOCK		USB[0x53]		NUMPAD +	USB[0x57]		F4		USB[0x3D]			//
+//	E	USB[0x08]		5	USB[0x22]		SPACE		USB[0x2C]		INSERT			USB[0x49]		NUMPAD ENT	USB[0x58]		F5		USB[0x3E]			//
+//	F	USB[0x09]		6	USB[0x23]		-			USB[0x2D]		HOME			USB[0x4A]		NUMPAD 1	USB[0x59]		F6		USB[0x3F]			//
+//	G	USB[0x0A]		7	USB[0x24]		=			USB[0x2E]		PAGE UP			USB[0x4B]		NUMPAD 2	USB[0x5A]		F7		USB[0x40]			//
+//	H	USB[0x0B]		8	USB[0x25]		{			USB[0x2F]		DELETE			USB[0x4C]		NUMPAD 3	USB[0x5B]		F8		USB[0x41]			//
+//	I	USB[0x0C]		9	USB[0x26]		}			USB[0x30]		END				USB[0x4D]		NUMPAD 4	USB[0x5C]		F9		USB[0x42]			//
+//	J	USB[0x0D]		0	USB[0x27]		/			USB[0x31]		PAGE DOWN		USB[0x4E]		NUMPAD 5	USB[0x5D]		F10		USB[0x43]			//
+//	K	USB[0x0E]							EUROPE1**	USB[0x32]										NUMPAD 6	USB[0x5E]		F11		USB[0x44]			//
+//	L	USB[0x0F]							:			USB[0x33]		RIGHT ARROW		USB[0x4F]		NUMPAD 7	USB[0x5F]		F12		USB[0x45]			//
+//	M	USB[0x10]							'			USB[0x34]		LEFT ARROW		USB[0x50]		NUMPAD 8	USB[0x60]		F13		USB[0x68]			//
+//	N	USB[0x11]							~			USB[0x35]		DOWN ARROW		USB[0x51]		NUMPAD 9	USB[0x61]		F14		USB[0x69]			//
+//	O	USB[0x12]							,			USB[0x36]		UP ARROW		USB[0x52]		NUMPAD 0	USB[0x62]		F15		USB[0x6A]			//
+//	P	USB[0x13]							.			USB[0x37]										NUMPAD .	USB[0x63]		F16		USB[0x6B]			//
+//	Q	USB[0x14]							\			USB[0x38]		MUTE			USB[0x7F]		NUMPAD =	USB[0x67]		F17		USB[0x6C]			//
+//	R	USB[0x15]							CAPS LOCK	USB[0x39]		VOL UP			USB[0x80]									F18		USB[0x6D]			//
+//	S	USB[0x16]														VOL DOWN		USB[0x81]									F19		USB[0x6E]			//
+//	T	USB[0x17]							L_CTL		USB[0xE0]																	F20		USB[0x6F]			//
+//	U	USB[0x18]							L_SHIFT		USB[0xE1]		EUROPE2**		USB[0x64]									F21		USB[0x70]			//
+//	V	USB[0x19]							L_ALT		USB[0xE2]		APPLICATION		USB[0x65]									F22		USB[0x71]			//
+//	W	USB[0x1A]							L_WIN		USB[0xE3]		POWER			USB[0x66]									F23		USB[0x72]			//
+//	X	USB[0x1B]							R_CTL		USB[0xE4]																	F24		USB[0x73]			//
+//	Y	USB[0x1C]							R_SHIFT		USB[0xE5]																								//
+//	Z	USB[0x1D]							R_ALT		USB[0xE6]																								//
+//											R_WIN		USB[0xE7]	** Further Special Keyboard Commands on page 54/60 of Target Script Editor Manual **		//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
