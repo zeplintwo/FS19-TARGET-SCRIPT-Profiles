@@ -1,0 +1,21 @@
+//---------------------------------------------------------------------------
+// Settings Variable Define
+//---------------------------------------------------------------------------
+
+define  LongPressDelay 300                   //Normal lenght delay 300ms
+
+//---------------------------------------------------------------------------
+// User Configuration Settings 
+//---------------------------------------------------------------------------
+
+// FDR or Zeplin keymap switching for throttle control
+//
+// Set 'ThrottleStyle' to 0 FDR controls or to 1 for One Stick Keymaping 
+
+    int ThrottleStyle = 0;
+    
+// Startup of keybinds in Foresty mode or in Tractor mode
+//
+// set 'ControlStyle' to 0 for Forestry mode or to 1 for Tractor mode B11 will be used ingame to swithch this mode as well.
+
+    int ControlStyle = 0;
