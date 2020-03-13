@@ -1,0 +1,122 @@
+//---------------------------------------------------------------------------
+//
+// FS19 Zeplin FDR Movement Script version 0.1
+//
+// Script branch on GitHub: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/Zeplin-SCRIPT
+//
+// Master Branch on GetHub: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/master
+//
+//      The inspration for the control profile comes from FDR Loging found here: https://www.fdrlogging.com/
+//      Scripts and codes are inspired from ED and other sources Aussiedroid has heavly influnced me.
+//
+//      This is a early attempt to build a dynamic keymap for FS19 based on the T16000.m Dual sticks.
+//      Most of the code checks out and works in exteral testing and the short game play that I have tested it. 
+//
+//      Please report any bugs, features or suggestion to above script branch.
+//
+//      This is a WIP there will be issues.
+//
+//      Use FS19-Zeplin-Setting-v#.#.ttm to adjust user preferances.
+//
+//      Script is built on the basis of a default FS19 keybind.       
+//  Use FS19-Keymaps-v#.#.ttm to adjust any non-standard keybinds for script to function properly. 
+//
+//---------------------------------------------------------------------------
+
+include "target_zeplin_dx128-v0.1.tmh" //modded target.tmh file so that it looks diffrent from stock
+include "FS19-Zeplin-Keymaps-v0.1.ttm" //Defined keymap based on FDR and FS19 default maps can be change here for non-standard keybind layouts. Default profile is best. Also allows expanded 120 DX functions and 8 DXHAT functions.
+include "FS19-Zeplin-Settings-v0.1.ttm" //User settings that can be changed to adjust behavior of programed actions.
+include "FS19-Zeplin-Macros-v0.1.ttm" //Storage of higher function macros 
+
+//program startup
+int main()
+{
+
+    //following lines turn off other thrustmaster stick except for t.16000
+    Configure(&HCougar, MODE_EXCLUDED);
+	Configure(&Joystick, MODE_EXCLUDED);
+	Configure(&JoystickF18, MODE_EXCLUDED);
+	Configure(&Throttle, MODE_EXCLUDED);
+	Configure(&LMFD, MODE_EXCLUDED);
+	Configure(&RMFD, MODE_EXCLUDED);
+	Configure(&TFRPRudder, MODE_EXCLUDED);
+	Configure(&TWCSThrottle, MODE_EXCLUDED);
+	Configure(&TFRPHARudder, MODE_EXCLUDED);
+	//end of exclustions
+	
+    if(Init(&EventHandle)) return 1; // declare the event handler, return on error
+    SetKBRate(32, 50);
+	SetKBLayout(KB_ENG);
+	
+	StartScriptOut();
+		  
+	//Motion control initilazation see FS19-Zeplin-Macros-v#.#.ttm
+	//MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for future ingame Foresty/Tractor binds. WIP does not yet work. will also be the basis for on fly Axis curve switch
+	
+	if (ControlStyle == 0) ForestyControlButtons(); 
+	if (ControlStyle == 1) TractorControlButtons();
+	MotionControlAssign(); //call to set FDR or Zeplin 
+	
+	//Joystick Axis 
+	MapAxis(&T16000L, JOYX, DX_Z_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	SetSCurve(&T16000L, JOYX, 0, 4, 0, 3, 0);
+	MapAxis(&T16000L, JOYY, DX_YROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	SetSCurve(&T16000L, JOYY, 0, 4, 0, 3, 0);
+	MapAxis(&T16000L, RUDDER, DX_ZROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	SetSCurve(&T16000L, RUDDER, 0, 3, 0, 3, 0);
+	MapAxis(&T16000L, THR, DX_YROT_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
+	SetJCurve(&T16000L, THR, 50, 50);
+	
+	//Joystick Axis
+	MapAxis(&T16000, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	SetSCurve(&T16000, JOYX, 0, 4, 0, 3, 0);
+	MapAxis(&T16000, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	SetSCurve(&T16000, JOYY, 0, 4, 0, 3, 0);
+	MapAxis(&T16000, RUDDER, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	SetSCurve(&T16000, RUDDER, 0, 3, 0, 4, 0);
+	MapAxis(&T16000, THR, DX_SLIDER_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
+	SetJCurve(&T16000, THR, 50, 50);
+	
+}
+
+//event handler
+int EventHandle(int type, alias o, int x)
+{
+    DefaultMapping(&o, x);
+	
+	//add event handling code here
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// REFERENCE: USB KEY DEFINITIONS //																															//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//																																								//
+//	A	USB[0x04]		1	USB[0x1E]		ENTER		USB[0x28]		PRINT SCREEN	USB[0x46]		NUMPAD /	USB[0x54]		F1		USB[0x3A]			//
+//	B	USB[0x05]		2	USB[0x1F]		ESCAPE		USB[0x29]		SCROLL LOCK		USB[0x47]		NUMPAD *	USB[0x55]		F2		USB[0x3B]			//
+//	C	USB[0x06]		3	USB[0x20]		BACKSPACE	USB[0x2A]		PAUSE/BREAK		USB[0x48]		NUMPAD -	USB[0x56]		F3		USB[0x3C]			//
+//	D	USB[0x07]		4	USB[0x21]		TAB			USB[0x2B]		NUM LOCK		USB[0x53]		NUMPAD +	USB[0x57]		F4		USB[0x3D]			//
+//	E	USB[0x08]		5	USB[0x22]		SPACE		USB[0x2C]		INSERT			USB[0x49]		NUMPAD ENT	USB[0x58]		F5		USB[0x3E]			//
+//	F	USB[0x09]		6	USB[0x23]		-			USB[0x2D]		HOME			USB[0x4A]		NUMPAD 1	USB[0x59]		F6		USB[0x3F]			//
+//	G	USB[0x0A]		7	USB[0x24]		=			USB[0x2E]		PAGE UP			USB[0x4B]		NUMPAD 2	USB[0x5A]		F7		USB[0x40]			//
+//	H	USB[0x0B]		8	USB[0x25]		{			USB[0x2F]		DELETE			USB[0x4C]		NUMPAD 3	USB[0x5B]		F8		USB[0x41]			//
+//	I	USB[0x0C]		9	USB[0x26]		}			USB[0x30]		END				USB[0x4D]		NUMPAD 4	USB[0x5C]		F9		USB[0x42]			//
+//	J	USB[0x0D]		0	USB[0x27]		/			USB[0x31]		PAGE DOWN		USB[0x4E]		NUMPAD 5	USB[0x5D]		F10		USB[0x43]			//
+//	K	USB[0x0E]							EUROPE1**	USB[0x32]										NUMPAD 6	USB[0x5E]		F11		USB[0x44]			//
+//	L	USB[0x0F]							:			USB[0x33]		RIGHT ARROW		USB[0x4F]		NUMPAD 7	USB[0x5F]		F12		USB[0x45]			//
+//	M	USB[0x10]							'			USB[0x34]		LEFT ARROW		USB[0x50]		NUMPAD 8	USB[0x60]		F13		USB[0x68]			//
+//	N	USB[0x11]							~			USB[0x35]		DOWN ARROW		USB[0x51]		NUMPAD 9	USB[0x61]		F14		USB[0x69]			//
+//	O	USB[0x12]							,			USB[0x36]		UP ARROW		USB[0x52]		NUMPAD 0	USB[0x62]		F15		USB[0x6A]			//
+//	P	USB[0x13]							.			USB[0x37]										NUMPAD .	USB[0x63]		F16		USB[0x6B]			//
+//	Q	USB[0x14]							\			USB[0x38]		MUTE			USB[0x7F]		NUMPAD =	USB[0x67]		F17		USB[0x6C]			//
+//	R	USB[0x15]							CAPS LOCK	USB[0x39]		VOL UP			USB[0x80]									F18		USB[0x6D]			//
+//	S	USB[0x16]														VOL DOWN		USB[0x81]									F19		USB[0x6E]			//
+//	T	USB[0x17]							L_CTL		USB[0xE0]																	F20		USB[0x6F]			//
+//	U	USB[0x18]							L_SHIFT		USB[0xE1]		EUROPE2**		USB[0x64]									F21		USB[0x70]			//
+//	V	USB[0x19]							L_ALT		USB[0xE2]		APPLICATION		USB[0x65]									F22		USB[0x71]			//
+//	W	USB[0x1A]							L_WIN		USB[0xE3]		POWER			USB[0x66]									F23		USB[0x72]			//
+//	X	USB[0x1B]							R_CTL		USB[0xE4]																	F24		USB[0x73]			//
+//	Y	USB[0x1C]							R_SHIFT		USB[0xE5]																								//
+//	Z	USB[0x1D]							R_ALT		USB[0xE6]																								//
+//											R_WIN		USB[0xE7]	** Further Special Keyboard Commands on page 54/60 of Target Script Editor Manual **		//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
