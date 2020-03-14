@@ -8,19 +8,21 @@ int     CCount = 0;
 // CUSTOM FUNCTIONS
 //---------------------------------------------------------------------------
    
-int ControlCount(){ //not working properly WIP
+int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
     if (CCount<1) {
-        CCount=0;
-        printf("Greater than 1 \xa");
-        }
-    else if (CCount>1) {
         CCount=CCount+1; 
-        printf("Less than 1 \xa");
+        printf("Loading Forestry Keymaps \xa");
+        ForestyControlButtons();
+        }
+    else {
+        CCount=0;
+        printf("Loading Tractor Keymaps \xa");
+        TractorControlButtons();
         }
     }
 
 
-int MotionControlAssign(){
+int MotionControlAssign(){ //used to select FDR or One Stick Movement
     if (ThrottleStyle == 1){//one stick movement
 	   MapKey(&T16000L, H1U, TEMPO(PULSE+CruiseControl,MachineForward,LongPressDelay));
 	   MapKey(&T16000L, H1D, MachineStopReverse);
@@ -35,8 +37,7 @@ int MotionControlAssign(){
        printf("FDR Motion Enabled \xa");}
     }
     
-int ForestyControlButtons(){
-    //keymaps for Forestry
+int ForestyControlButtons(){ //keymaps for Forestry
 	//Left Joystick for Key Mapings
 	MapKey(&T16000L, TS1, TriggerJoyL); //main trigger defined tool function 1 b
 	MapKey(&T16000L, TS2, TopMiddleJoyL); //top middle defined rotate claw left
@@ -44,7 +45,7 @@ int ForestyControlButtons(){
 	MapKey(&T16000L, TS4, TopRightJoyL); //top right defined belt/strap load
 	MapKey(&T16000L, B5, EngineStart); //engine start defined 
 	MapKey(&T16000L, B6, DX55);
-	MapKey(&T16000L, B7, DX65);
+	MapKey(&T16000L, B7, SwitchNextVehicle);
 	MapKey(&T16000L, B8, ParkVehicle); //park vehicle from fs19 modhub
 	MapKey(&T16000L, B9, DX58);
 	MapKey(&T16000L, B10, DX59);
@@ -65,7 +66,7 @@ int ForestyControlButtons(){
 	MapKey(&T16000, TS4, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&T16000, TS4, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
 	MapKey(&T16000, B5, Lights); //lights key defined 
-	MapKey(&T16000, B6, DX37);
+	MapKey(&T16000, B6, Strobes);
 	MapKey(&T16000, B7, DX38);
 	MapKey(&T16000, B8, DX39);
 	MapKey(&T16000, B9, DX40);
@@ -81,16 +82,15 @@ int ForestyControlButtons(){
 	printf("Forestry Mode Enabled \xa");
 	}//end of Forestry buttons
 
-int TractorControlButtons(){
-    //keymaps for general Tractor usage
+int TractorControlButtons(){//keymaps for general Tractor usage
 	//Left Joystick Key Mapings
 	MapKey(&T16000L, TS1, TriggerJoyL); //main trigger defined tool function 1 b
 	MapKey(&T16000L, TS2, ToolLowerLift); //top middle defined lower lift tool v
-	MapKey(&T16000L, TS3, DX19); //top left defined
+	MapKey(&T16000L, TS3, SelectTool); //top left defined
 	MapKey(&T16000L, TS4, TopRightJoyL); //top tight defined belt/strap load
 	MapKey(&T16000L, B5, EngineStart); //engine start defined
 	MapKey(&T16000L, B6, DX22);
-	MapKey(&T16000L, B7, DX23);
+	MapKey(&T16000L, B7, SwitchNextVehicle);
 	MapKey(&T16000L, B8, ParkVehicle); //park vehicle from fs19 modhub
 	MapKey(&T16000L, B9, DX24);
 	MapKey(&T16000L, B10, DX25);
@@ -104,11 +104,13 @@ int TractorControlButtons(){
 	MapKey(&T16000L, H1L, CruiseControl);
 	//Right Joystick Key Mapings
 	MapKey(&T16000, TS1, TriggerJoyR); //Main trigger defined
-	MapKey(&T16000, TS2, TopMiddleJoyR); //Top middle defined
-	MapKey(&T16000, TS3, TopLeftJoyR); //Top left defined
-	MapKey(&T16000, TS4, TopRightJoyR); //Top right defined
+	MapKey(&T16000, TS2, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&T16000, TS2, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
+	MapKey(&T16000, TS3, DX4); 
+	MapKey(&T16000, TS4, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&T16000, TS4, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
 	MapKey(&T16000, B5, Lights); //lights key defined 
-	MapKey(&T16000, B6, DX6);
+	MapKey(&T16000, B6, Strobes);
 	MapKey(&T16000, B7, DX7);
 	MapKey(&T16000, B8, DX8);
 	MapKey(&T16000, B9, DX9);
@@ -124,7 +126,7 @@ int TractorControlButtons(){
 	printf("Tractor Mode Enabled \xa");
 	}//end of Tractor buttons
 	
-int StartScriptOut(){
+int StartScriptOut(){ // Just some pretty words
     printf("----------------------------------- \xa");
     printf(" \xa");
     printf(" Starting FS19 control script \xa");

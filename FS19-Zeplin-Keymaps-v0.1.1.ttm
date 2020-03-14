@@ -10,41 +10,48 @@
 //FDR recomended keymaps
 //Left joysticks keymaps
 //TS1
-define TriggerJoyL USB[0x05] //b key for fs19 for tool function 1 power unpower device selected
+define TriggerJoyL          USB[0x05] //b key for fs19 for tool function 1 power unpower device selected
 //TS4
-define TopRightJoyL USB[0x0F] //l key for fs19 for fasten/unfasten tension belts 
+define TopRightJoyL         USB[0x0F] //l key for fs19 for fasten/unfasten tension belts 
 //TS3
-define TopLeftJoyL L_SHIFT+L_CTL+USB[0x0D] //L_Shift+L_Ctrl+j for fs19 rotate crane tool right 
+define TopLeftJoyL          L_SHIFT+L_CTL+USB[0x0D] //L_Shift+L_Ctrl+j for fs19 rotate crane tool right 
 //TS2
-define TopMiddleJoyL L_SHIFT+L_CTL+USB[0x11] //L_Shift+L_Ctrl+n for fs19 rotate crane tool left
+define TopMiddleJoyL        L_SHIFT+L_CTL+USB[0x11] //L_Shift+L_Ctrl+n for fs19 rotate crane tool left
 //H1U
-define HatUpJoyL L_SHIFT+USB[0x0D] //l_shift+j for fs19 2nd Claw Open
+define HatUpJoyL            L_SHIFT+USB[0x0D] //l_shift+j for fs19 2nd Claw Open
 //H1D
-define HatDownJoyL L_SHIFT+USB[0x11] //l_shift+n for fs19 2nd Claw Close
+define HatDownJoyL          L_SHIFT+USB[0x11] //l_shift+n for fs19 2nd Claw Close
 
 //Right joystick keymaps
 //TS1
-define TriggerJoyR USB[0x1B] //x key for fs19 for tool function 2
+define TriggerJoyR          USB[0x1B] //x key for fs19 for tool function 2
 //TS4
-define TopRightJoyR ("ActKey(KEYON+L_SHIFT+USB[0x0E]); ActKey(KEYON+L_SHIFT+L_CTL+USB[0x0E]);") //L_Shift+k and L_Shift+L_Ctrl+k held on for fs19 open frontloader tool open crane tool
-define TopRightJoyROff ("ActKey(L_SHIFT+USB[0x0E]); ActKey(L_SHIFT+L_CTL+USB[0x0E]);") //
+define TopRightJoyR         ("ActKey(KEYON+L_SHIFT+USB[0x0E]); ActKey(KEYON+L_SHIFT+L_CTL+USB[0x0E]);") //L_Shift+k and L_Shift+L_Ctrl+k held on for fs19 open frontloader tool open crane tool
+define TopRightJoyROff      ("ActKey(L_SHIFT+USB[0x0E]); ActKey(L_SHIFT+L_CTL+USB[0x0E]);") //
 //TS3
-define TopLeftJoyR ("ActKey(KEYON+USB[0x12]); ActKey(KEYON+USB[0x1c]);")//o and y key press held on for toggle pipe and tool function 3
-define TopLeftJoyROff ("ActKey(USB[0x12]); ActKey(USB[0x1c]);") //o and y release key press for toggle pipe and tool function 3
+define TopLeftJoyR          ("ActKey(KEYON+USB[0x12]); ActKey(KEYON+USB[0x1c]);")//o and y key press held on for toggle pipe and tool function 3
+define TopLeftJoyROff       ("ActKey(USB[0x12]); ActKey(USB[0x1c]);") //o and y release key press for toggle pipe and tool function 3
 //TS2
-define TopMiddleJoyR ("ActKey(KEYON+L_SHIFT+USB[0x10]);ActKey(KEYON+L_SHIFT+L_CTL+USB[0x10]);") //L_Shift+m for fs19 close frontloader tool
-define TopMiddleJoyROff ("ActKey(L_SHIFT+USB[0x10]);ActKey(L_SHIFT+L_CTL+USB[0x10]);")  //L_Shift+L_Ctrl+m for fs19 close crane tool
+define TopMiddleJoyR        ("ActKey(KEYON+L_SHIFT+USB[0x10]);ActKey(KEYON+L_SHIFT+L_CTL+USB[0x10]);") //L_Shift+m for fs19 close frontloader tool
+define TopMiddleJoyROff     ("ActKey(L_SHIFT+USB[0x10]);ActKey(L_SHIFT+L_CTL+USB[0x10]);")  //L_Shift+L_Ctrl+m for fs19 close crane tool
 
 //FS19 Keybinds used in Scripting and assigned 
-define MachineForward USB[0x1A] //w key to add forward motion to device that you are piloting for fs19
-define MachineStopReverse USB[0x16] //s key to add reverse and stop motion to device you are piloting for fs19
-define EngineStart USB[0x28] //Enter or return for fs19 to start engines or menu interaction
-define ParkVehicle L_CTL+USB[0x17] //L_CTL+T for park vehicle mod from fs19 modhub
-define Strobes USB[0x4A] //home key to activate strobes for FS19
-define Lights USB[0x09] //f key to turn on lights for fs19
-define ToolLowerLift USB[0x19] //v key to lower/lift tool selected for fs19
-define CruiseControl USB[0x20] //3 key to toggle cruise control for fs19
-define CameraCycle USB[0x06] //c key to cycle the camera control for fs19
+define MachineForward       USB[0x1A] //w key to add forward motion to device that you are piloting for fs19
+define MachineStopReverse   USB[0x16] //s key to add reverse and stop motion to device you are piloting for fs19
+define EngineStart          USB[0x28] //Enter or return for fs19 to start engines or menu interaction
+define ParkVehicle          L_CTL+USB[0x17] //L_CTL+T for park vehicle mod from fs19 modhub
+define Strobes              USB[0x4A] //home key to activate strobes for FS19
+define Lights               USB[0x09] //f key to turn on lights for fs19
+define ToolLowerLift        USB[0x19] //v key to lower/lift tool selected for fs19
+define CruiseControl        USB[0x20] //3 key to toggle cruise control for fs19
+define CameraCycle          USB[0x06] //c key to cycle the camera control for fs19
+define AttachTool           USB[0x14] //q key to attach/detach tools for fs19
+define SelectTool           USB[0x0A] //g key to cycle through attached tools for fs19
+define ToggleWorker         USB[0x0B] //h key to 'hire' NPC worker
+define Honk                 USB[0x27] //0 key to honk machines horn
+define Dump                 USB[0x0C] //i key to dump/overload tool/machine load
+define ToggleSideTip        USB[0x18] //u key to Toggle the side for tiping of Load
+define SwitchNextVehicle    USB[0x2B] //TAB key to switch vehicles
 
 //---------------------------------------------------------------------------
 //

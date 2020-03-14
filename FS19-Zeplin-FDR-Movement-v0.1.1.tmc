@@ -51,10 +51,9 @@ int main()
 	StartScriptOut();
 		  
 	//Motion control initilazation see FS19-Zeplin-Macros-v#.#.ttm
-	MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for future ingame Foresty/Tractor binds. WIP does not yet work. will also be the basis for on fly Axis curve switch
-	
 	if (ControlStyle == 0) ForestyControlButtons(); 
 	if (ControlStyle == 1) TractorControlButtons();
+	MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for future ingame Foresty/Tractor binds. WIP does not yet work. will also be the basis for on fly Axis curve switch
 	MotionControlAssign(); //call to set FDR or Zeplin 
 	
 	//Joystick Axis Left

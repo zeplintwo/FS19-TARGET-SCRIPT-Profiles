@@ -12,10 +12,18 @@ define  LongPressDelay 300                   //Normal lenght delay 300ms
 //
 // Set 'ThrottleStyle' to 0 FDR controls or to 1 for One Stick Keymaping 
 
-    int ThrottleStyle = 0;
+    int ThrottleStyle = 0; //Default 0
     
 // Startup of keybinds in Foresty mode or in Tractor mode
 //
-// set 'ControlStyle' to 0 for Forestry mode or to 1 for Tractor mode B11 will be used ingame to swithch this mode as well.
+// set 'ControlStyle' to 0 for Forestry mode or to 1 for Tractor mode B11 will be used ingame to swithch this mode as well. 
 
-    int ControlStyle = 0;
+    int ControlStyle = 0; //Default 0
+    
+// Ingame alearts for mode toggle sound/lights 
+//
+// set SoundAlert to 0 for off or 1 for on
+// set LightAlert to 0 for off or 1 for on
+
+    int SoundAlert = 1; //Default 1
+    int LightAlert = 1; //Default 1
