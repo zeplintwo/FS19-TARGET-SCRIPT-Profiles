@@ -3,17 +3,17 @@ Thrustmaster TARGET profiles for usage in Farming Simulator 19. Initial keymaps 
 
 ----------------------------------------------------------
 
-Master Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/master
-
-FDR Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/FDR-Base-profle
-
 Zeplin SCRIPT Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/Zeplin-SCRIPT
 
-Master branch for Thrustmaster TARGET GUI profile updates and distribution. This will be the most basic of scripting and very little in the way of extra functionality. Will not be compatible with SCRIPT branch. May not be compatible with FDR Branch
+FS19-TARGET-GUI-One-Stick-Motion: https://github.com/zeplintwo/FS19-TARGET-GUI-One-Stick-Motion
 
-FDR Branch is the direct layout a best as I can build that follows FDR’s key binding. This may have higher scripting functions in the future based off functions form the ‘Zeplin SCRIPT’ Branch. May or may not be compatible to Master or SCRIPT Branches
+FS19-FDR-TARGET-GUI: https://github.com/zeplintwo/FS19-FDR-TARGET-GUI
 
 Zeplin SCRIPT Branch will have as much advanced TARGET scripting as I see fit. And will not hesitate to incorporate 3rd part/external sources if said sources are willing to allow usage of said scripts. Will not be compatible to Master branch. Parts may be compatible with FDR branch.
+
+FS19-TARGET-GUI-One-Stick-Motion branch for Thrustmaster TARGET GUI profile updates and distribution. This will be the most basic of scripting and very little in the way of extra functionality. Will not be compatible with SCRIPT branch. May not be compatible with FDR Branch
+
+FS19-FDR-TARGET-GUI Branch for Thrustmaster TARGET GUI is the direct layout a best as I can build that follows FDR’s key binding. This may have higher scripting functions in the future based off functions form the ‘Zeplin SCRIPT’ Branch. May or may not be compatible to Master or SCRIPT Branches
 
 ----------------------------------------------------------
 
