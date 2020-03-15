@@ -25,7 +25,7 @@
 
 include "target_zeplin_dx128-v0.1.tmh"      //modded target.tmh file so that it looks diffrent from stock
 include "FS19-Zeplin-Keymaps-v0.1.1.ttm"    //Defined keymap based on FDR and FS19 default maps can be change here for non-standard keybind layouts. Default profile is best. Also allows expanded 120 DX functions and 8 DXHAT functions.
-include "FS19-Zeplin-Settings-v0.1.ttm"     //User settings that can be changed to adjust behavior of programed actions.
+include "FS19-Zeplin-Settings-v0.1.1.ttm"     //User settings that can be changed to adjust behavior of programed actions.
 include "FS19-Zeplin-Macros-v0.1.1.ttm"     //Storage of higher function macros 
 
 //program startup
