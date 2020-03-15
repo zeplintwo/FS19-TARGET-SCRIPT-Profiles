@@ -11,26 +11,26 @@ int     CCount = 0;
 int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
     if (CCount<1) {
         CCount=CCount+1; 
-        printf("Loading Forestry Keymaps \xa");
+        //printf("Loading Forestry Keymaps \xa");
         ForestyControlButtons();
         }
     else {
         CCount=0;
-        printf("Loading Tractor Keymaps \xa");
+        //printf("Loading Tractor Keymaps \xa");
         TractorControlButtons();
         }
     }
 
-int JoyControlCount(){ //Used to toggle between Forestry and Tractor Binds
+int JoyControlCount(){ //Used to toggle between Flat and Progressive Joystick Curves
     if (JSProfile<1) {
         JSProfile=JSProfile+1; 
         printf("Flat Joystick Axis Curves \xa");
-        ForestyControlButtons();
+        JoyAxisCurveSet();
         }
     else {
         JSProfile=0;
         printf("Progressive Joystick Axis Curves \xa");
-        TractorControlButtons();
+        JoyAxisCurveSet();
         }
     }
 
@@ -91,15 +91,15 @@ int ForestyControlButtons(){ //keymaps for Forestry
 	MapKey(&T16000, B16, DX47);
 	MapKey(&T16000, H1R, DX48);
 	MapKey(&T16000, H1L, SelectTool);
-	printf("Forestry Mode Enabled \xa");
+	printf("---Forestry Mode Enabled \x0a");
 	}//end of Forestry buttons
 
 int TractorControlButtons(){//keymaps for general Tractor usage
 	//Left Joystick Key Mapings
 	MapKey(&T16000L, TS1, TriggerJoyL); //main trigger defined tool function 1 b
 	MapKey(&T16000L, TS2, ToolLowerLift); //top middle defined lower lift tool v
-	MapKey(&T16000L, TS3, SelectTool); //top left defined
-	MapKey(&T16000L, TS4, TopRightJoyL); //top tight defined belt/strap load
+	MapKey(&T16000L, TS3, SelectTool); //top left defined select tool g
+	MapKey(&T16000L, TS4, TopRightJoyL); //top right defined belt/strap load
 	MapKey(&T16000L, B5, EngineStart); //engine start defined
 	MapKey(&T16000L, B6, DX22);
 	MapKey(&T16000L, B7, SwitchNextVehicle);
@@ -113,16 +113,16 @@ int TractorControlButtons(){//keymaps for general Tractor usage
 	MapKey(&T16000L, B15, DX30);
 	MapKey(&T16000L, B16, DX31);
 	MapKey(&T16000L, H1R, CameraCycle);
-	MapKey(&T16000L, H1L, CruiseControl);
+	MapKey(&T16000L, H1L, DX33);
 	//Right Joystick Key Mapings
-	MapKey(&T16000, TS1, TriggerJoyR); //Main trigger defined
+	MapKey(&T16000, TS1, TriggerJoyR); //Main trigger defined tool function 2 x
 	MapKey(&T16000, TS2, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&T16000, TS2, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
 	MapKey(&T16000, TS3, DX4); 
 	MapKey(&T16000, TS4, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&T16000, TS4, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
 	MapKey(&T16000, B5, Lights); //lights key defined 
-	MapKey(&T16000, B6, Strobes);
+	MapKey(&T16000, B6, Strobes);//strobes 'HOME' defined key
 	MapKey(&T16000, B7, DX7);
 	MapKey(&T16000, B8, DX8);
 	MapKey(&T16000, B9, DX9);
@@ -134,8 +134,8 @@ int TractorControlButtons(){//keymaps for general Tractor usage
 	MapKey(&T16000, B15, DX15);
 	MapKey(&T16000, B16, DX16);
 	MapKey(&T16000, H1R, DXHATRIGHT);
-	MapKey(&T16000, H1L, SelectTool);
-	printf("Tractor Mode Enabled \xa");
+	MapKey(&T16000, H1L, DXHATLEFT);
+	printf("---Tractor Mode Enabled \x0a");
 	}//end of Tractor buttons
 	
 int JoyAxisSet(){
@@ -144,13 +144,13 @@ int JoyAxisSet(){
 	MapAxis(&T16000L, JOYY, DX_YROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
 	MapAxis(&T16000L, RUDDER, DX_ZROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
 	MapAxis(&T16000L, THR, DX_THROTTLE_AXIS, AXIS_REVERSED, MAP_ABSOLUTE); 
-	printf("Left Joystick Axis Set \xa");
+	//printf("---Left Joystick Axis Set \xa");
 	//Joystick Axis Right
 	MapAxis(&T16000, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
 	MapAxis(&T16000, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
 	MapAxis(&T16000, RUDDER, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
 	MapAxis(&T16000, THR, DX_SLIDER_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
-	printf("Right Joystick Axis Set \xa");
+	//printf("---Right Joystick Axis Set \xa");
 	}
 	
 int JoyAxisCurveSet(){
@@ -158,12 +158,12 @@ int JoyAxisCurveSet(){
     SetSCurve(&T16000L, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000L, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000L, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
-    printf("Left Joystick Curves Set \xa");
+    printf("---Left Joystick Curves Set \xa");
     //Joystick Curves Right
     SetSCurve(&T16000, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
-    printf("Right Joystick Curves Set \xa");
+    printf("---Right Joystick Curves Set \xa");
     }
     
 int JoyThrottleCurveSet(){
@@ -171,7 +171,7 @@ int JoyThrottleCurveSet(){
     SetJCurve(&T16000L, THR, 50, 50);
     //Joystick Throttle Curve Right
     SetJCurve(&T16000, THR, 50, 50);
-    printf("Joystick Throttle Curves Set \xa");
+    //printf("---Joystick Throttle Curves Set \xa");
     }
 	
 int StartScriptOut(){ // Just some pretty words
