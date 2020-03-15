@@ -53,28 +53,11 @@ int main()
 	//Motion control initilazation see FS19-Zeplin-Macros-v#.#.ttm
 	if (ControlStyle == 0) ForestyControlButtons(); 
 	if (ControlStyle == 1) TractorControlButtons();
-	MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for future ingame Foresty/Tractor binds. WIP does not yet work. will also be the basis for on fly Axis curve switch
-	MotionControlAssign(); //call to set FDR or Zeplin 
-	
-	//Joystick Axis Left
-	MapAxis(&T16000L, JOYX, DX_Z_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	SetSCurve(&T16000L, JOYX, 0, 4, 0, 3, 0);
-	MapAxis(&T16000L, JOYY, DX_YROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	SetSCurve(&T16000L, JOYY, 0, 4, 0, 3, 0);
-	MapAxis(&T16000L, RUDDER, DX_ZROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	SetSCurve(&T16000L, RUDDER, 0, 3, 0, 3, 0);
-	MapAxis(&T16000L, THR, DX_THROTTLE_AXIS, AXIS_REVERSED, MAP_ABSOLUTE); 
-	SetJCurve(&T16000L, THR, 50, 50);
-	
-	//Joystick Axis Right
-	MapAxis(&T16000, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	SetSCurve(&T16000, JOYX, 0, 4, 0, 3, 0);
-	MapAxis(&T16000, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	SetSCurve(&T16000, JOYY, 0, 4, 0, 3, 0);
-	MapAxis(&T16000, RUDDER, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	SetSCurve(&T16000, RUDDER, 0, 3, 0, 4, 0);
-	MapAxis(&T16000, THR, DX_SLIDER_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
-	SetJCurve(&T16000, THR, 50, 50);
+	MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for ingame Foresty/Tractor binds
+	MotionControlAssign(); //Call to set FDR or One Stick 
+	JoyAxisSet(); //Call to set Joystick Axis
+	JoyAxisCurveSet(); //Call to set Joystick Curves
+	JoyThrottleCurveSet(); //Call to set Throttle Curves
 	
 }
 

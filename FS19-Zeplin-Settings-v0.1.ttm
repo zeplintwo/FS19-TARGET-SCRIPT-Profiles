@@ -1,11 +1,22 @@
 //---------------------------------------------------------------------------
-// Settings Variable Define
+//  Settings Variable Define
 //---------------------------------------------------------------------------
 
-define  LongPressDelay 300                   //Normal lenght delay 300ms
+define LongPressDelay       300                     //Normal lenght delay 300ms
+define MorseDashTime        600                     //Lenght of device on for a morse dash
+define MorseDotTime         400                     //Lenght of device on for a morse dot
+define MorsePause           300                     //Lenght of device off between morse dash or dot
 
 //---------------------------------------------------------------------------
-// User Configuration Settings 
+//  Joystick Axis Curves
+//---------------------------------------------------------------------------
+
+define JSDeadZone           4
+short JSCurve[]         =   {10,0};
+short JSZoom[]          =   {0,0};
+
+//---------------------------------------------------------------------------
+//  User Configuration Settings 
 //---------------------------------------------------------------------------
 
 // FDR or Zeplin keymap switching for throttle control
@@ -27,3 +38,13 @@ define  LongPressDelay 300                   //Normal lenght delay 300ms
 
     int SoundAlert = 1; //Default 1
     int LightAlert = 1; //Default 1
+    
+// Ingame axis toggle profile
+//
+// set JSProfile to 0 for Zeplin's default profile or 1 for flat curvse ie strait lines
+
+    int JSProfile = 0;
+
+//
+//---------------------------------------------------------------------------
+    

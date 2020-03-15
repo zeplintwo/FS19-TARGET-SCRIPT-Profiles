@@ -21,6 +21,18 @@ int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
         }
     }
 
+int JoyControlCount(){ //Used to toggle between Forestry and Tractor Binds
+    if (JSProfile<1) {
+        JSProfile=JSProfile+1; 
+        printf("Flat Joystick Axis Curves \xa");
+        ForestyControlButtons();
+        }
+    else {
+        JSProfile=0;
+        printf("Progressive Joystick Axis Curves \xa");
+        TractorControlButtons();
+        }
+    }
 
 int MotionControlAssign(){ //used to select FDR or One Stick Movement
     if (ThrottleStyle == 1){//one stick movement
@@ -49,7 +61,7 @@ int ForestyControlButtons(){ //keymaps for Forestry
 	MapKey(&T16000L, B8, ParkVehicle); //park vehicle from fs19 modhub
 	MapKey(&T16000L, B9, DX58);
 	MapKey(&T16000L, B10, DX59);
-	MapKey(&T16000L, B11, DX60);
+	//MapKey(&T16000L, B11, 0);//Lock out for usage on joystick axis live switch between two profiles should not be assigned in game
 	MapKey(&T16000L, B12, DX61);
 	MapKey(&T16000L, B13, DX62);
 	MapKey(&T16000L, B14, DX63);
@@ -71,14 +83,14 @@ int ForestyControlButtons(){ //keymaps for Forestry
 	MapKey(&T16000, B8, DX39);
 	MapKey(&T16000, B9, DX40);
 	MapKey(&T16000, B10, DX41);
-	//MapKey(&T16000, B11, 0);// lockout for usage on b11 so it returns null and can not be assigned in game.
+	//MapKey(&T16000, B11, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
 	MapKey(&T16000, B12, DX43);
 	MapKey(&T16000, B13, DX44);
 	MapKey(&T16000, B14, DX45);
 	MapKey(&T16000, B15, DX46);
 	MapKey(&T16000, B16, DX47);
 	MapKey(&T16000, H1R, DX48);
-	MapKey(&T16000, H1L, DX49);
+	MapKey(&T16000, H1L, SelectTool);
 	printf("Forestry Mode Enabled \xa");
 	}//end of Forestry buttons
 
@@ -94,7 +106,7 @@ int TractorControlButtons(){//keymaps for general Tractor usage
 	MapKey(&T16000L, B8, ParkVehicle); //park vehicle from fs19 modhub
 	MapKey(&T16000L, B9, DX24);
 	MapKey(&T16000L, B10, DX25);
-	MapKey(&T16000L, B11, DX26);
+	//MapKey(&T16000L, B11, 0);//Lock out for usage on joystick axis live switch between two profiles should not be assigned in game
 	MapKey(&T16000L, B12, DX27);
 	MapKey(&T16000L, B13, DX28);
 	MapKey(&T16000L, B14, DX29);
@@ -115,16 +127,52 @@ int TractorControlButtons(){//keymaps for general Tractor usage
 	MapKey(&T16000, B8, DX8);
 	MapKey(&T16000, B9, DX9);
 	MapKey(&T16000, B10, DX10);
-	//MapKey(&T16000, B11, 0);// lockout for usage on b11 so it returns null and can not be assigned in game.
+	//MapKey(&T16000, B11, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
 	MapKey(&T16000, B12, DX12);
 	MapKey(&T16000, B13, DX13);
 	MapKey(&T16000, B14, DX14);
 	MapKey(&T16000, B15, DX15);
 	MapKey(&T16000, B16, DX16);
 	MapKey(&T16000, H1R, DXHATRIGHT);
-	MapKey(&T16000, H1L, DXHATLEFT);
+	MapKey(&T16000, H1L, SelectTool);
 	printf("Tractor Mode Enabled \xa");
 	}//end of Tractor buttons
+	
+int JoyAxisSet(){
+    //Joystick Axis Left
+	MapAxis(&T16000L, JOYX, DX_Z_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&T16000L, JOYY, DX_YROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&T16000L, RUDDER, DX_ZROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&T16000L, THR, DX_THROTTLE_AXIS, AXIS_REVERSED, MAP_ABSOLUTE); 
+	printf("Left Joystick Axis Set \xa");
+	//Joystick Axis Right
+	MapAxis(&T16000, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&T16000, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&T16000, RUDDER, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&T16000, THR, DX_SLIDER_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
+	printf("Right Joystick Axis Set \xa");
+	}
+	
+int JoyAxisCurveSet(){
+    //Joystick Curves Left
+    SetSCurve(&T16000L, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    SetSCurve(&T16000L, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    SetSCurve(&T16000L, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    printf("Left Joystick Curves Set \xa");
+    //Joystick Curves Right
+    SetSCurve(&T16000, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    SetSCurve(&T16000, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    SetSCurve(&T16000, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    printf("Right Joystick Curves Set \xa");
+    }
+    
+int JoyThrottleCurveSet(){
+    //Joystick Throttle Curve Left
+    SetJCurve(&T16000L, THR, 50, 50);
+    //Joystick Throttle Curve Right
+    SetJCurve(&T16000, THR, 50, 50);
+    printf("Joystick Throttle Curves Set \xa");
+    }
 	
 int StartScriptOut(){ // Just some pretty words
     printf("----------------------------------- \xa");

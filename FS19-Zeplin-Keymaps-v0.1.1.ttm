@@ -53,6 +53,8 @@ define Dump                 USB[0x0C] //i key to dump/overload tool/machine load
 define ToggleSideTip        USB[0x18] //u key to Toggle the side for tiping of Load
 define SwitchNextVehicle    USB[0x2B] //TAB key to switch vehicles
 
+
+
 //---------------------------------------------------------------------------
 //
 // -- DX128 Notes --
