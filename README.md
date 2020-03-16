@@ -1,46 +1,50 @@
 # FS19-TARGET-SCRIPT-Profiles
 Thrustmaster TARGET profiles for usage in Farming Simulator 19. Initial keymaps based on FDR's Logging maps from https://www.fdrlogging.com/. Will be used to bring more advanced controls to T16000.M Dual sticks in FS19.
 
-----------------------------------------------------------
+---
 
-Zeplin SCRIPT Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/Zeplin-SCRIPT
+<dl>
+<dt>Zeplin SCRIPT Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/Zeplin-SCRIPT
 	
-Will have as much advanced TARGET scripting as I see fit. And will not hesitate to incorporate 3rd part/external sources if said sources are willing to allow usage of said scripts. Will not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch. Parts may be compatible with FS19-FDR-TARGET-GUI Branch.
+<dd>Will have as much advanced TARGET scripting as I see fit. And will not hesitate to incorporate 3rd part/external sources if said sources are willing to allow usage of said scripts. Will not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch. Parts may be compatible with FS19-FDR-TARGET-GUI Branch.
 
-FS19-TARGET-GUI-One-Stick-Motion: https://github.com/zeplintwo/FS19-TARGET-GUI-One-Stick-Motion
+<dt> FS19-TARGET-GUI-One-Stick-Motion: https://github.com/zeplintwo/FS19-TARGET-GUI-One-Stick-Motion
 
-It is for Thrustmaster TARGET GUI profile updates and distribution. This will be the most basic of scripting and very little in the way of extra functionality. Will not be compatible with Zeplin SCRIPT Branch. May not be compatible with FS19-FDR-TARGET-GUI Branch.
+<dd> It is for Thrustmaster TARGET GUI profile updates and distribution. This will be the most basic of scripting and very little in the way of extra functionality. Will not be compatible with Zeplin SCRIPT Branch. May not be compatible with FS19-FDR-TARGET-GUI Branch.
 
-FS19-FDR-TARGET-GUI: https://github.com/zeplintwo/FS19-FDR-TARGET-GUI
+<dt>FS19-FDR-TARGET-GUI: https://github.com/zeplintwo/FS19-FDR-TARGET-GUI
 
-It is for Thrustmaster TARGET GUI is the direct layout a best as I can build that follows FDR’s key binding. This may have higher scripting functions in the future based off functions form the Zeplin SCRIPT Branch. May or may not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch or Zeplin SCRIPT Branches.
+<dd>It is for Thrustmaster TARGET GUI is the direct layout a best as I can build that follows FDR’s key binding. This may have higher scripting functions in the future based off functions form the Zeplin SCRIPT Branch. May or may not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch or Zeplin SCRIPT Branches.
+</dl>
 
-----------------------------------------------------------
+---
 
 Thrustmaster US website: http://www.thrustmaster.com/en_US
+
 Thrustmaster US support: http://www.thrustmaster.com/en_US/support
-Thrustmaster US T.16000m downloads https://support.thrustmaster.com/en/product/t-16000m-fcs-space-sim-duo-en/
+
+Thrustmaster US T.16000m downloads: https://support.thrustmaster.com/en/product/t-16000m-fcs-space-sim-duo-en/
 
 Target software found in download link above under software as of this writing on March 12, 2020 the file name was T.A.R.G.E.T.-Software v3.0.18.328 v2. There is no direct link I can give. The version number will change in the future. 
 
-----------------------------------------------------------
+---
 
 ##Installation:
 
-	1.	Download and extract the latest ‘source’ files. From https://github.com/zeplintwo/FS19-TARGET-SCRIPT-Profiles/releases
-	2.	Unpack zip and keep all files in same directory. 
-	3.	Open ‘TARGET Script Editor’ Open and Compile ‘FS19-Zeplin-FDR-Movment-v#.#.#.tmc
-	4.	Edit FS19-Zeplin-Settings-v#.#.#.ttm save changes if any
-	5.	Close ‘TARGET Script Editor’ window 
-	6.	Launch ‘TARGET GUI’ and ‘Run Configuration’ on FS19-Zeplin-FDR-Movment-v#.#.#.tmc. 
-		-	You can also run the configuration from the Script Editor.
-	7.	Bind the recommended Joystick Axis in FS19 in the Options > Gamepad Controls
-	8.	Launch save game and enjoy. 
+   1. Download and extract the latest ‘source’ files. [Releases](https://github.com/zeplintwo/FS19-TARGET-SCRIPT-Profiles/releases)
+   2. Unpack zip and keep all files in same directory. 
+   3. Open ‘TARGET Script Editor’ Open and Compile ‘FS19-Zeplin-FDR-Movment-v#.#.#.tmc
+   4. Edit FS19-Zeplin-Settings-v#.#.#.ttm save changes if any
+   5. Close ‘TARGET Script Editor’ window 
+   6. Launch ‘TARGET GUI’ and ‘Run Configuration’ on FS19-Zeplin-FDR-Movment-v#.#.#.tmc. 
+      - You can also run the configuration from the Script Editor.
+   7. Bind the recommended Joystick Axis in FS19 in the Options > Gamepad Controls
+   8. Launch save game and enjoy. 
 
 Successful TARGET GUI window: 
 ![alt text]( https://imgur.com/emRKjwG.png "Successful TARGET GUI window")
 
-----------------------------------------------------------
+---
 
 ##File Usages:
 
@@ -71,4 +75,4 @@ README.md
 target_zeplin_dx128-v0.1.tmh
  * Modified version of the ‘target.tmh’ that renames the combined device and preps for 120 DX devices and 8 HAT Functions
 
-----------------------------------------------------------
+---
