@@ -1,16 +1,19 @@
 # FS19-TARGET-SCRIPT-Profiles
-TThrustmaster TARGET profiles for usage in Farming Simulator 19. Initial keymaps based on FDR's Logging maps from https://www.fdrlogging.com/. Will be used to bring more advanced controls to T16000.M Dual sticks in FS19.
+Thrustmaster TARGET profiles for usage in Farming Simulator 19. Initial keymaps based on FDR's Logging maps from https://www.fdrlogging.com/. Will be used to bring more advanced controls to T16000.M Dual sticks in FS19.
 
 ----------------------------------------------------------
 
 Zeplin SCRIPT Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/Zeplin-SCRIPT
-	Will have as much advanced TARGET scripting as I see fit. And will not hesitate to incorporate 3rd part/external sources if said sources are willing to allow usage of said scripts. Will not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch. Parts may be compatible with FS19-FDR-TARGET-GUI Branch.
+	
+Will have as much advanced TARGET scripting as I see fit. And will not hesitate to incorporate 3rd part/external sources if said sources are willing to allow usage of said scripts. Will not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch. Parts may be compatible with FS19-FDR-TARGET-GUI Branch.
 
 FS19-TARGET-GUI-One-Stick-Motion: https://github.com/zeplintwo/FS19-TARGET-GUI-One-Stick-Motion
-	It is for Thrustmaster TARGET GUI profile updates and distribution. This will be the most basic of scripting and very little in the way of extra functionality. Will not be compatible with Zeplin SCRIPT Branch. May not be compatible with FS19-FDR-TARGET-GUI Branch.
+
+It is for Thrustmaster TARGET GUI profile updates and distribution. This will be the most basic of scripting and very little in the way of extra functionality. Will not be compatible with Zeplin SCRIPT Branch. May not be compatible with FS19-FDR-TARGET-GUI Branch.
 
 FS19-FDR-TARGET-GUI: https://github.com/zeplintwo/FS19-FDR-TARGET-GUI
-	It is for Thrustmaster TARGET GUI is the direct layout a best as I can build that follows FDR’s key binding. This may have higher scripting functions in the future based off functions form the Zeplin SCRIPT Branch. May or may not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch or Zeplin SCRIPT Branches.
+
+It is for Thrustmaster TARGET GUI is the direct layout a best as I can build that follows FDR’s key binding. This may have higher scripting functions in the future based off functions form the Zeplin SCRIPT Branch. May or may not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch or Zeplin SCRIPT Branches.
 
 ----------------------------------------------------------
 
@@ -35,29 +38,37 @@ Target software found in download link above under software as of this writing o
 	8.	Launch save game and enjoy. 
 
 Successful TARGET GUI window: 
-![alt text]( https://i.imgur.com/emRKjwG.png"Successful TARGET GUI window")
+![alt text]( https://imgur.com/emRKjwG.png "Successful TARGET GUI window")
 
 ----------------------------------------------------------
 
 ##File Usages:
 
 FS19-Forestry-Motion-Layout.jpg
-	Forestry mode joystick graphic that show the button layout and what the assigned buttons do. As well as what is open for assignment
+ * Forestry mode joystick graphic that show the button layout and what the assigned buttons do. As well as what is open for assignment.
+ 
 FS19-Tractor-Motion-Layout.jpg
-	Tractor mode joystick graphic that show the button layout and what the assigned buttons do. As well as what is open for assignment
+ * Tractor mode joystick graphic that show the button layout and what the assigned buttons do. As well as what is open for assignment.
+ 
 FS19-Zeplin-FDR-Movement-v#.#.#.tmc
-	Main control script for the Dual T16000.M joysticks that has two motion control systems. One based on FDR’s Forestry keybinds. Second is based on tractor needs. Both are accessible at anytime via button press ingame
+ * Main control script for the Dual T16000.M joysticks that has two motion control systems. One based on FDR’s Forestry keybinds. Second is based on tractor needs. Both are accessible at anytime via button press ingame.
+ 
 FS19-Zeplin-Keymaps-v#.#.#.ttm
-	Main keymap defines some are to make the scripting work properly some are stock FS19 keybinds. Only change the stock and scripting binds if you are using a non-standard key setup. All keybinds are in Thrustmaster ‘USB’ code to be valid over a larger number of keyboard layouts. Any changes in this files keybinds should use the ‘USB’ keys instead of direct character mapping.
+ * Main keymap defines some are to make the scripting work properly some are stock FS19 keybinds. Only change the stock and scripting binds if you are using a non-standard key setup. All keybinds are in Thrustmaster ‘USB’ code to be valid over a larger number of keyboard layouts. Any changes in this files keybinds should use the ‘USB’ keys instead of direct character mapping.
+ 
 FS19-Zeplin-Macros-v#.#.#.ttm
-	Macro and function scripting area. This is where the magic happens baby. Most things are commented for helping understand it use
+ * Macro and function scripting area. This is where the magic happens baby. Most things are commented for helping understand it use.
+ 
 FS19-Zeplin-Settings-v#.#.#.ttm
-	Settings are the intended area for the user to change the exposed setting for the script. There will be place holder setting for WIP functions.
+ * Settings are the intended area for the user to change the exposed setting for the script. There will be place holder setting for WIP functions.
+ 
 LICENSE
-	Non-script related file. It is the usage and distribution license for the script project
+ * Non-script related file. It is the usage and distribution license for the script project.
+ 
 README.md
-	This file that is displayed on GITHUB or as a first read to help with the use of the script
+ * This file that is displayed on GITHUB or as a first read to help with the use of the script.
+ 
 target_zeplin_dx128-v0.1.tmh
-	Modified version of the ‘target.tmh’ that renames the combined device and preps for 120 DX devices and 8 HAT Functions
+ * Modified version of the ‘target.tmh’ that renames the combined device and preps for 120 DX devices and 8 HAT Functions
 
 ----------------------------------------------------------
