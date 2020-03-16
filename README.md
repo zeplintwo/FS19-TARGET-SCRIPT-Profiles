@@ -29,16 +29,17 @@ Target software found in download link above under software as of this writing o
 
 ---
 
-##Installation:
+## Installation:
 
    1. Download and extract the latest ‘source’ files. [Releases](https://github.com/zeplintwo/FS19-TARGET-SCRIPT-Profiles/releases)
    2. Unpack zip and keep all files in same directory. 
-   3. Open ‘TARGET Script Editor’ Open and Compile ‘FS19-Zeplin-FDR-Movment-v#.#.#.tmc
-   4. Edit FS19-Zeplin-Settings-v#.#.#.ttm save changes if any
-   5. Close ‘TARGET Script Editor’ window 
-   6. Launch ‘TARGET GUI’ and ‘Run Configuration’ on FS19-Zeplin-FDR-Movment-v#.#.#.tmc. 
+   3. Open ‘TARGET Script Editor’ Open and Compile ‘FS19-Zeplin-FDR-Movment-v#.#.#.tmc'.
+   4. Edit 'FS19-Zeplin-Settings-v#.#.#.ttm' save changes if any.
+   5. Close ‘TARGET Script Editor’ window.
+   6. Launch ‘TARGET GUI’ and ‘Run Configuration’ on 'FS19-Zeplin-FDR-Movment-v#.#.#.tmc'. 
       - You can also run the configuration from the Script Editor.
-   7. Bind the recommended Joystick Axis in FS19 in the Options > Gamepad Controls
+   7. Bind the recommended Joystick Axis in FS19 in the Options > Gamepad Controls.
+      - Use the 'FS19-Forestry-Motion-Layout.jpg' or 'FS19-Target-Motion-Layout.jpg' for where they should be assigned
    8. Launch save game and enjoy. 
 
 Successful TARGET GUI window: 
@@ -46,7 +47,7 @@ Successful TARGET GUI window:
 
 ---
 
-##File Usages:
+## File Usages:
 
 FS19-Forestry-Motion-Layout.jpg
  * Forestry mode joystick graphic that show the button layout and what the assigned buttons do. As well as what is open for assignment.
