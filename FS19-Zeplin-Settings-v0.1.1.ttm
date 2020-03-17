@@ -8,8 +8,8 @@ define LongPressDelay       300                     //Normal lenght delay 300ms
 //  Joystick Axis Curves
 //---------------------------------------------------------------------------
 
-define JSDeadZone           4
-short JSCurve[]         =   {3,0};
+define JSDeadZone           5
+short JSCurve[]         =   {5,0};
 short JSZoom[]          =   {0,0};
 
 //---------------------------------------------------------------------------
@@ -20,7 +20,7 @@ short JSZoom[]          =   {0,0};
 //
 // Set 'ThrottleStyle' to 0 FDR controls or to 1 for One Stick Keymaping 
 
-    int ThrottleStyle = 0;      //Default 0
+    int ThrottleStyle =0;      //Default 0
     
 // Startup of keybinds in Foresty mode or in Tractor mode
 //

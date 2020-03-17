@@ -33,11 +33,15 @@ int JoyControlCount(){ //Used to toggle between Flat and Progressive Joystick Cu
         JSProfile=JSProfile+1; 
         printf("Flat Joystick Axis Curves \xa");
         JoyAxisCurveSet();
+        if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
+        if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
         }
     else {
         JSProfile=0;
         printf("Progressive Joystick Axis Curves \xa");
         JoyAxisCurveSet();
+        if (LightAlert == 1) ActKey(KEYON+PULSE+Lights);
+        if (SoundAlert == 1) ActKey(KEYON+PULSE+Horn);
         }
     }
 
@@ -47,7 +51,7 @@ int MotionControlAssign(){ //used to select FDR or One Stick Movement
 	   MapKey(&T16000L, H1D, MachineStopReverse);
 	   MapKey(&T16000, H1U, HatUpJoyL );
 	   MapKey(&T16000, H1D, HatDownJoyL);
-	   printf("Zeplin One Stick Motion Enabled \xa"); }
+	   printf("One Stick Motion Enabled \xa"); }
     if (ThrottleStyle ==0){//FDR Movement
        MapKey(&T16000L, H1U, HatUpJoyL);
        MapKey(&T16000L, H1D, HatDownJoyL);
