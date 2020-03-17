@@ -3,9 +3,6 @@
 //---------------------------------------------------------------------------
 
 define LongPressDelay       300                     //Normal lenght delay 300ms
-define MorseDashTime        600                     //Lenght of device on for a morse dash
-define MorseDotTime         400                     //Lenght of device on for a morse dot
-define MorsePause           300                     //Lenght of device off between morse dash or dot
 
 //---------------------------------------------------------------------------
 //  Joystick Axis Curves

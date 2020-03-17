@@ -60,6 +60,10 @@ int main()
 	JoyAxisCurveSet(); //Call to set Joystick Curves
 	JoyThrottleCurveSet(); //Call to set Throttle Curves
 	
+	//MapKey(&T16000, B16, EXEC("MorseF();"));//CHAIN(KEYON+Lights,D(MorseDashDelay),PULSE+Lights,D(MorseDelay),KEYON+Lights,D(MorseDotDelay),PULSE+Lights,D(MorseDelay),KEYON+Lights,D(MorseDashDelay),PULSE+Lights));
+	
+	
+	
 }
 
 //event handler

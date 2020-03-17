@@ -48,7 +48,7 @@ define CameraCycle          USB[0x06] //c key to cycle the camera control for fs
 define AttachTool           USB[0x14] //q key to attach/detach tools for fs19
 define SelectTool           USB[0x0A] //g key to cycle through attached tools for fs19
 define ToggleWorker         USB[0x0B] //h key to 'hire' NPC worker
-define Honk                 USB[0x27] //0 key to honk machines horn
+define Horn                 USB[0x27] //0 key to honk machines horn
 define Dump                 USB[0x0C] //i key to dump/overload tool/machine load
 define ToggleSideTip        USB[0x18] //u key to Toggle the side for tiping of Load
 define SwitchNextVehicle    USB[0x2B] //TAB key to switch vehicles

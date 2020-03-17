@@ -2,7 +2,10 @@
 // MACRO VARIABLE INITALISATION
 //---------------------------------------------------------------------------
 
-int     CCount = 0;
+int     CCount              = 0;
+int     MorseDashDelay      = 800 ;
+int     MorseDotDelay       = 400 ;
+int     MorseDelay          = 300 ;
 
 //---------------------------------------------------------------------------
 // CUSTOM FUNCTIONS
@@ -13,11 +16,15 @@ int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
         CCount=CCount+1; 
         //printf("Loading Forestry Keymaps \xa");
         ForestyControlButtons();
+        if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
+        if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
         }
     else {
         CCount=0;
         //printf("Loading Tractor Keymaps \xa");
         TractorControlButtons();
+        if (LightAlert == 1) ActKey(KEYON+PULSE+Lights);
+        if (SoundAlert == 1) ActKey(KEYON+PULSE+Horn);
         }
     }
 
@@ -173,7 +180,7 @@ int JoyThrottleCurveSet(){
     SetJCurve(&T16000, THR, 50, 50);
     //printf("---Joystick Throttle Curves Set \xa");
     }
-	
+    	
 int StartScriptOut(){ // Just some pretty words
     printf("----------------------------------- \xa");
     printf(" \xa");
