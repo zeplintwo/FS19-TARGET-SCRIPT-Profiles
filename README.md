@@ -4,7 +4,7 @@ Thrustmaster TARGET profiles for usage in Farming Simulator 19. Initial keymaps 
 ---
 
 <dl>
-<dt>Zeplin SCRIPT Branch: https://github.com/zeplintwo/FS19-TARGET-Profiles/tree/Zeplin-SCRIPT
+<dt>Zeplin SCRIPT Branch: https://github.com/zeplintwo/FS19-TARGET-SCRIPT-Profiles
 	
 <dd>Will have as much advanced TARGET scripting as I see fit. And will not hesitate to incorporate 3rd part/external sources if said sources are willing to allow usage of said scripts. Will not be compatible to FS19-TARGET-GUI-One-Stick-Motion Branch. Parts may be compatible with FS19-FDR-TARGET-GUI Branch.
 
