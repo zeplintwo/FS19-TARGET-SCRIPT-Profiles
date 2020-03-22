@@ -8,8 +8,8 @@ define LongPressDelay       300                     //Normal lenght delay 300ms
 //  Joystick Axis Curves
 //---------------------------------------------------------------------------
 
-define JSDeadZone           5
-short JSCurve[]         =   {5,0};
+define JSDeadZone           7
+short JSCurve[]         =   {10,0};
 short JSZoom[]          =   {0,0};
 
 //---------------------------------------------------------------------------
@@ -20,13 +20,13 @@ short JSZoom[]          =   {0,0};
 //
 // Set 'ThrottleStyle' to 0 FDR controls or to 1 for One Stick Keymaping 
 
-    int ThrottleStyle =0;      //Default 0
+    int ThrottleStyle =1;      //Default 0
     
 // Startup of keybinds in Foresty mode or in Tractor mode
 //
 // set 'ControlStyle' to 0 for Forestry mode or to 1 for Tractor mode B11 will be used ingame to swithch this mode as well. 
 
-    int ControlStyle = 0;       //Default 0
+    int ControlStyle = 1;       //Default 0
     
 // Ingame alearts for mode toggle sound/lights 
 //
@@ -41,6 +41,12 @@ short JSZoom[]          =   {0,0};
 // set JSProfile to 0 for Zeplin's default profile or 1 for flat curvse ie strait lines
 
     int JSProfile = 0;          //Default 0
+
+// Warthog Thrustmaster as right stick
+//
+// set WarthogStick to 0 for dual T16000.m and 1 for single T16000.m and single Warthog stick
+
+    int WarthogStick = 1;       //Default 0
 
 //
 //---------------------------------------------------------------------------

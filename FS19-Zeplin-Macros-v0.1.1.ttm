@@ -15,14 +15,14 @@ int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
     if (CCount<1) {
         CCount=CCount+1; 
         //printf("Loading Forestry Keymaps \xa");
-        ForestyControlButtons();
-        if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
-        if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
+        ForestyControlButtons();         
+        if (LightAlert == 1) ActKey(CHAIN(KEYON+Lights,D(100),KEYON+PULSE+Lights));
+        if (SoundAlert == 1) ActKey(CHAIN(KEYON+Horn,D(100),KEYON+PULSE+Horn));
         }
     else {
         CCount=0;
         //printf("Loading Tractor Keymaps \xa");
-        TractorControlButtons();
+        TractorControlButtons();        
         if (LightAlert == 1) ActKey(KEYON+PULSE+Lights);
         if (SoundAlert == 1) ActKey(KEYON+PULSE+Horn);
         }
@@ -49,18 +49,46 @@ int MotionControlAssign(){ //used to select FDR or One Stick Movement
     if (ThrottleStyle == 1){//one stick movement
 	   MapKey(&T16000L, H1U, TEMPO(PULSE+CruiseControl,MachineForward,LongPressDelay));
 	   MapKey(&T16000L, H1D, MachineStopReverse);
-	   MapKey(&T16000, H1U, HatUpJoyL );
-	   MapKey(&T16000, H1D, HatDownJoyL);
+	   
+	   if (WarthogStick == 1) {
+	        MapKey(&Joystick, H1U, HatUpJoyL );
+            MapKey(&Joystick, H1D, HatDownJoyL );
+            }
+	   else {	   
+	        MapKey(&T16000, H1U, HatUpJoyL );
+	        MapKey(&T16000, H1D, HatDownJoyL);
+	        }
+	   
 	   printf("One Stick Motion Enabled \xa"); }
     if (ThrottleStyle ==0){//FDR Movement
        MapKey(&T16000L, H1U, HatUpJoyL);
        MapKey(&T16000L, H1D, HatDownJoyL);
-       MapKey(&T16000, H1U, TEMPO(PULSE+CruiseControl,MachineForward,LongPressDelay));
-       MapKey(&T16000, H1D, MachineStopReverse);
+       
+       if (WarthogStick == 1) {
+            MapKey(&Joystick, H1U, TEMPO(PULSE+CruiseControl,MachineForward,LongPressDelay));
+            MapKey(&Joystick, H1D, MachineStopReverse);
+            }
+       else {
+            MapKey(&T16000, H1U, TEMPO(PULSE+CruiseControl,MachineForward,LongPressDelay));
+            MapKey(&T16000, H1D, MachineStopReverse);
+            }            
        printf("FDR Motion Enabled \xa");}
     }
     
-int ForestyControlButtons(){ //keymaps for Forestry
+int ForestyControlButtons () {
+    ForestyControlButtonsJoyL ();
+    if (WarthogStick == 1) ForestyControlButtonsJoyA10R ();
+    else ForestyControlButtonsJoyR ();
+    }
+    
+int TractorControlButtons (){
+    TractorControlButtonsJoyL ();
+    if (WarthogStick == 1) TractorControlButtonsJoyA10R ();
+    else TractorControlButtonsJoyR ();
+    }
+        
+    
+int ForestyControlButtonsJoyL(){ //keymaps for Forestry
 	//Left Joystick for Key Mapings
 	MapKey(&T16000L, TS1, TriggerJoyL); //main trigger defined tool function 1 b
 	MapKey(&T16000L, TS2, TopMiddleJoyL); //top middle defined rotate claw left
@@ -80,6 +108,9 @@ int ForestyControlButtons(){ //keymaps for Forestry
 	MapKey(&T16000L, B16, DX65);
 	MapKey(&T16000L, H1R, CameraCycle);
 	MapKey(&T16000L, H1L, DX67);
+    }//end of Forestry buttons left T16000.m
+    
+int ForestyControlButtonsJoyR(){
 	//Right Joystick Key Mapings
 	MapKey(&T16000, TS1, TriggerJoyR); //Main trigger defined tool function 2 x
 	MapKey(&T16000, TS2, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
@@ -103,9 +134,38 @@ int ForestyControlButtons(){ //keymaps for Forestry
 	MapKey(&T16000, H1R, DX48);
 	MapKey(&T16000, H1L, SelectTool);
 	printf("---Forestry Mode Enabled \x0a");
-	}//end of Forestry buttons
+	}//end of Forestry buttons right T16000.m
+	
+int ForestyControlButtonsJoyA10R(){
+	//Right Joystick Key Mapings
+	MapKey(&Joystick, TS1, TriggerJoyR); //Main trigger defined tool function 2 x
+	//Mapkey(&Joystick, TS2, TriggerJotR); 
+	MapKey(&Joystick, H2D, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2D, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
+	MapKey(&Joystick, H2L, EXEC(TopLeftJoyR)); //Top left defined tool function 3, toggle pipe hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2L, EXEC(TopLeftJoyROff)); //Top left defined tool function 3, toggle pipe release key on button release
+	MapKey(&Joystick, H2R, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2R, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
+    MapKeyR(&Joystick, H2U, DX36);
+	//MapKey(&Joystick, S1, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
+	MapKey(&Joystick, S2, Lights); //lights key defined 
+	MapKey(&Joystick, S3, Strobes);
+	MapKey(&Joystick, S4, DX37);
+	MapKey(&Joystick, H3U, DX38);
+	MapKey(&Joystick, H3R, DX39);
+	MapKey(&Joystick, H3D, DX40);
+	MapKey(&Joystick, H3L, DX41);
+	MapKey(&Joystick, H4U, DX43);
+	MapKey(&Joystick, H4R, DX44);
+	MapKey(&Joystick, H4D, DX45);
+	MapKey(&Joystick, H4L, DX46);
+	MapKey(&Joystick, H4P, DX47);
+	MapKey(&Joystick, H1R, DX48);
+	MapKey(&Joystick, H1L, SelectTool);
+	printf("---Forestry Mode Enabled \x0a");
+	}//end of Forestry buttons right Warthog
 
-int TractorControlButtons(){//keymaps for general Tractor usage
+int TractorControlButtonsJoyL(){//keymaps for general Tractor usage
 	//Left Joystick Key Mapings
 	MapKey(&T16000L, TS1, TriggerJoyL); //main trigger defined tool function 1 b
 	MapKey(&T16000L, TS2, ToolLowerLift); //top middle defined lower lift tool v
@@ -125,6 +185,9 @@ int TractorControlButtons(){//keymaps for general Tractor usage
 	MapKey(&T16000L, B16, DX31);
 	MapKey(&T16000L, H1R, CameraCycle);
 	MapKey(&T16000L, H1L, DX33);
+    }//end of Forestry buttons left T16000.m
+	
+int TractorControlButtonsJoyR(){//keymaps for general Tractor usage	
 	//Right Joystick Key Mapings
 	MapKey(&T16000, TS1, TriggerJoyR); //Main trigger defined tool function 2 x
 	MapKey(&T16000, TS2, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
@@ -149,6 +212,34 @@ int TractorControlButtons(){//keymaps for general Tractor usage
 	printf("---Tractor Mode Enabled \x0a");
 	}//end of Tractor buttons
 	
+int TractorControlButtonsJoyA10R(){//keymaps for general Tractor usage	
+    //Right Joystick Key Mapings
+	MapKey(&Joystick, TS1, TriggerJoyR); //Main trigger defined tool function 2 x
+	//Mapkey(&Joystick, TS2, TriggerJotR); 
+	MapKey(&Joystick, H2D, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2D, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
+	MapKey(&Joystick, H2L, DX4); //Top left defined tool function 3, toggle pipe hold on neaded for sending multiple indiviual keypress
+	MapKey(&Joystick, H2R, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2R, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
+    MapKeyR(&Joystick, H2U, DX4);
+	//MapKey(&Joystick, S1, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
+	MapKey(&Joystick, S2, Lights); //lights key defined 
+	MapKey(&Joystick, S3, Strobes);
+	MapKey(&Joystick, S4, DX6);
+	MapKey(&Joystick, H3U, DX7);
+	MapKey(&Joystick, H3R, DX8);
+	MapKey(&Joystick, H3D, DX9);
+	MapKey(&Joystick, H3L, DX10);
+	MapKey(&Joystick, H4U, DX11);
+	MapKey(&Joystick, H4R, DX12);
+	MapKey(&Joystick, H4D, DX13);
+	MapKey(&Joystick, H4L, DX14);
+	MapKey(&Joystick, H4P, DX15);
+	MapKey(&Joystick, H1R, DXHATRIGHT);
+	MapKey(&Joystick, H1L, DXHATLEFT);
+	printf("---Tractor Mode Enabled \x0a");
+	}//end of Tractor buttons
+	
 int JoyAxisSet(){
     //Joystick Axis Left
 	MapAxis(&T16000L, JOYX, DX_Z_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
@@ -157,10 +248,16 @@ int JoyAxisSet(){
 	MapAxis(&T16000L, THR, DX_THROTTLE_AXIS, AXIS_REVERSED, MAP_ABSOLUTE); 
 	//printf("---Left Joystick Axis Set \xa");
 	//Joystick Axis Right
-	MapAxis(&T16000, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	MapAxis(&T16000, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	MapAxis(&T16000, RUDDER, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
-	MapAxis(&T16000, THR, DX_SLIDER_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
+	if (WarthogStick == 1){
+	   MapAxis(&Joystick, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	   MapAxis(&Joystick, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	   }
+	else {
+	   MapAxis(&T16000, JOYX, DX_X_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	   MapAxis(&T16000, JOYY, DX_Y_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	   MapAxis(&T16000, RUDDER, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	   MapAxis(&T16000, THR, DX_SLIDER_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
+	   }
 	//printf("---Right Joystick Axis Set \xa");
 	}
 	
@@ -171,9 +268,15 @@ int JoyAxisCurveSet(){
     SetSCurve(&T16000L, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     printf("---Left Joystick Curves Set \xa");
     //Joystick Curves Right
+    if (WarthogStick == 1){
+	   SetSCurve(&Joystick, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+	   SetSCurve(&Joystick, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+	   }
+	else {
     SetSCurve(&T16000, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+    }
     printf("---Right Joystick Curves Set \xa");
     }
     
@@ -181,7 +284,7 @@ int JoyThrottleCurveSet(){
     //Joystick Throttle Curve Left
     SetJCurve(&T16000L, THR, 50, 50);
     //Joystick Throttle Curve Right
-    SetJCurve(&T16000, THR, 50, 50);
+    if (WarthogStick == 0) SetJCurve(&T16000, THR, 50, 50);
     //printf("---Joystick Throttle Curves Set \xa");
     }
     	
