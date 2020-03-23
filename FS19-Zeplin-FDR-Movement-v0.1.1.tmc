@@ -53,11 +53,12 @@ int main()
 	//Motion control initilazation see FS19-Zeplin-Macros-v#.#.ttm
 	if (ControlStyle == 0) ForestyControlButtons();
 	if (ControlStyle == 1) TractorControlButtons();
-	MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for ingame Foresty/Tractor binds
-	MapKey(&Joystick, S1, EXEC("ControlCount();")); //Toggle for ingame Foresty/Tractor binds
+	if (WarthogStick == 1) MapKey(&Joystick, S1, EXEC("ControlCount();")); //Toggle for ingame Foresty/Tractor binds
+	else MapKey(&T16000,B11,EXEC("ControlCount();")); //Toggle for ingame Foresty/Tractor binds
+	
 	MotionControlAssign(); //Call to set FDR or One Stick 
 	JoyAxisSet(); //Call to set Joystick Axis
-	MapKey(&T16000L, B11, EXEC("JoyControlCount();"));//Toggle for ingame Joystick curve switching
+	MapKey(&T16000L, B11, EXEC("JoyAxisCurveCount();"));//Toggle for ingame Joystick curve switching
 	JoyAxisCurveSet(); //Call to set Joystick Curves
 	JoyThrottleCurveSet(); //Call to set Throttle Curves
 	

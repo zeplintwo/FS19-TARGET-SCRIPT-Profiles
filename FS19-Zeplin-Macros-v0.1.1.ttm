@@ -28,21 +28,29 @@ int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
         }
     }
 
-int JoyControlCount(){ //Used to toggle between Flat and Progressive Joystick Curves
-    if (JSProfile<1) {
-        JSProfile=JSProfile+1; 
-        printf("Flat Joystick Axis Curves \xa");
-        JoyAxisCurveSet();
+int JoyAxisCurveCount(){ //increment to JSProfile to switch between Axis response curves
+    if (JSProfile < 2) JSProfile=JSProfile+1;
+    else JSProfile=0;
+    JoyControlIncrement ();
+    }     
+
+int JoyControlIncrement(){ //Ingame and text response to changes in Axis Joystick Curves
+    if (JSProfile == 2) {
+        printf("Precision Joystick Axis Curves \xa");
         if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
         if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
         }
-    else {
-        JSProfile=0;
+    if (JSProfile == 1) {
+        printf("Flat Joystick Axis Curves \xa");
+        if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
+        if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
+        }
+    if (JSProfile == 0) {
         printf("Progressive Joystick Axis Curves \xa");
-        JoyAxisCurveSet();
         if (LightAlert == 1) ActKey(KEYON+PULSE+Lights);
         if (SoundAlert == 1) ActKey(KEYON+PULSE+Horn);
         }
+    JoyAxisCurveSet();
     }
 
 int MotionControlAssign(){ //used to select FDR or One Stick Movement
@@ -266,7 +274,7 @@ int JoyAxisCurveSet(){
     SetSCurve(&T16000L, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000L, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
     SetSCurve(&T16000L, RUDDER, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
-    printf("---Left Joystick Curves Set \xa");
+    printf("---Left Joystick Curves Set \xa") ;
     //Joystick Curves Right
     if (WarthogStick == 1){
 	   SetSCurve(&Joystick, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);

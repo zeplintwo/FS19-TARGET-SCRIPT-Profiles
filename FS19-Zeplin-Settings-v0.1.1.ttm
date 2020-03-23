@@ -2,15 +2,15 @@
 //  Settings Variable Define
 //---------------------------------------------------------------------------
 
-define LongPressDelay       300                     //Normal lenght delay 300ms
+define LongPressDelay       300                     //Normal lenght delay sugested 300ms
 
 //---------------------------------------------------------------------------
 //  Joystick Axis Curves
 //---------------------------------------------------------------------------
 
-define JSDeadZone           7
-short JSCurve[]         =   {10,0};
-short JSZoom[]          =   {0,0};
+define JSDeadZone           5                       //is a percentage 0 to 100.
+short JSCurve[]         =   {7,0,20};               //{Progresive,Flat,Percision} must be between -32 and 32 as a whole number
+short JSZoom[]          =   {0,0,-2};               //{Progresive,Flat,Percision} is a percentage 0 to 100. Negative increase accuracy at expence of range. Postive reduce accurace but compresses map to reduce throw on device axis.
 
 //---------------------------------------------------------------------------
 //  User Configuration Settings 
@@ -38,7 +38,7 @@ short JSZoom[]          =   {0,0};
     
 // Ingame axis toggle profile
 //
-// set JSProfile to 0 for Zeplin's default profile or 1 for flat curvse ie strait lines
+// set JSProfile to 0 for Zeplin's default profile or 1 for flat curvse ie strait lines or 2 for percision mode
 
     int JSProfile = 0;          //Default 0
 
