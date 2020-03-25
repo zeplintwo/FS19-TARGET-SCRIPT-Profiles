@@ -164,7 +164,7 @@ int ForestyControlButtonsJoyA10R(){
 	MapKeyR(&Joystick, H2L, EXEC(TopLeftJoyROff)); //Top left defined tool function 3, toggle pipe release key on button release
 	MapKey(&Joystick, H2U, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&Joystick, H2U, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
-    MapKeyR(&Joystick, H2D, DX36);
+    MapKey(&Joystick, H2R, DX36);
 	//MapKey(&Joystick, S1, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
 	MapKey(&Joystick, S2, Lights); //lights key defined 
 	MapKey(&Joystick, S3, Strobes);
@@ -236,10 +236,10 @@ int TractorControlButtonsJoyA10R(){//keymaps for general Tractor usage
 	//Mapkey(&Joystick, TS2, TriggerJotR); 
 	MapKey(&Joystick, H2D, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&Joystick, H2D, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
-	MapKey(&Joystick, H2L, DX4); //Top left defined tool function 3, toggle pipe hold on neaded for sending multiple indiviual keypress
+	MapKey(&Joystick, H2L, DX4); 
 	MapKey(&Joystick, H2U, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&Joystick, H2U, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
-    MapKeyR(&Joystick, H2R, DX4);
+    MapKey(&Joystick, H2R, DX5);
 	//MapKey(&Joystick, S1, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
 	MapKey(&Joystick, S2, Lights); //lights key defined 
 	MapKey(&Joystick, S3, Strobes);
