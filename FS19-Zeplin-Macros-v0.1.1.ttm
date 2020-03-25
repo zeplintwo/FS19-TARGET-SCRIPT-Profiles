@@ -3,9 +3,9 @@
 //---------------------------------------------------------------------------
 
 int     CCount              = 0;
-int     MorseDashDelay      = 800 ;
-int     MorseDotDelay       = 400 ;
-int     MorseDelay          = 300 ;
+int     MorseDashDelay      = 450 ;
+int     MorseDotDelay       = 300 ;
+int     MorseDelay          = 200 ;
 
 //---------------------------------------------------------------------------
 // CUSTOM FUNCTIONS
@@ -16,16 +16,29 @@ int ControlCount(){ //Used to toggle between Forestry and Tractor Binds
         CCount=CCount+1; 
         //printf("Loading Forestry Keymaps \xa");
         ForestyControlButtons();         
-        if (LightAlert == 1) ActKey(CHAIN(KEYON+Lights,D(100),KEYON+PULSE+Lights));
-        if (SoundAlert == 1) ActKey(CHAIN(KEYON+Horn,D(100),KEYON+PULSE+Horn));
+        TwoPulse();
         }
     else {
         CCount=0;
         //printf("Loading Tractor Keymaps \xa");
-        TractorControlButtons();        
-        if (LightAlert == 1) ActKey(KEYON+PULSE+Lights);
-        if (SoundAlert == 1) ActKey(KEYON+PULSE+Horn);
+        TractorControlButtons();
+        OnePulse();
         }
+    }
+    
+int ThreePulse(){
+    if (LightAlert == 1) ActKey(CHAIN(KEYON+Lights,D(MorseDotDelay),KEYON+PULSE+Lights,D(MorseDelay),KEYON+Lights,D(MorseDotDelay),KEYON+PULSE+Lights,D(MorseDelay),KEYON+Lights,D(MorseDotDelay),KEYON+PULSE+Lights));
+    if (SoundAlert == 1) ActKey(CHAIN(KEYON+Horn,D(MorseDotDelay),KEYON+PULSE+Horn,D(MorseDelay),KEYON+Horn,D(MorseDotDelay),KEYON+PULSE+Horn,D(MorseDelay),KEYON+Horn,D(MorseDotDelay),KEYON+PULSE+Horn));
+    }
+
+int TwoPulse(){
+    if (LightAlert == 1) ActKey(CHAIN(KEYON+Lights,D(MorseDotDelay),KEYON+PULSE+Lights,D(MorseDelay),KEYON+Lights,D(MorseDotDelay),KEYON+PULSE+Lights));
+    if (SoundAlert == 1) ActKey(CHAIN(KEYON+Horn,D(MorseDotDelay),KEYON+PULSE+Horn,D(MorseDelay),KEYON+Horn,D(MorseDotDelay),KEYON+PULSE+Horn));
+    }
+
+int OnePulse(){
+    if (LightAlert == 1) ActKey(CHAIN(KEYON+Lights,D(MorseDotDelay),KEYON+PULSE+Lights));
+    if (SoundAlert == 1) ActKey(CHAIN(KEYON+Horn,D(MorseDotDelay),KEYON+PULSE+Horn));
     }
 
 int JoyAxisCurveCount(){ //increment to JSProfile to switch between Axis response curves
@@ -37,18 +50,15 @@ int JoyAxisCurveCount(){ //increment to JSProfile to switch between Axis respons
 int JoyControlIncrement(){ //Ingame and text response to changes in Axis Joystick Curves
     if (JSProfile == 2) {
         printf("Precision Joystick Axis Curves \xa");
-        if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
-        if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
+        ThreePulse();
         }
     if (JSProfile == 1) {
         printf("Flat Joystick Axis Curves \xa");
-        if (LightAlert == 1) ActKey(CHAIN(KEYON+PULSE+Lights,D(100),KEYON+PULSE+Lights));
-        if (SoundAlert == 1) ActKey(CHAIN(KEYON+PULSE+Horn,D(100),KEYON+PULSE+Horn));
+        TwoPulse();
         }
     if (JSProfile == 0) {
         printf("Progressive Joystick Axis Curves \xa");
-        if (LightAlert == 1) ActKey(KEYON+PULSE+Lights);
-        if (SoundAlert == 1) ActKey(KEYON+PULSE+Horn);
+        OnePulse();
         }
     JoyAxisCurveSet();
     }
@@ -152,9 +162,9 @@ int ForestyControlButtonsJoyA10R(){
 	MapKeyR(&Joystick, H2D, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
 	MapKey(&Joystick, H2L, EXEC(TopLeftJoyR)); //Top left defined tool function 3, toggle pipe hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&Joystick, H2L, EXEC(TopLeftJoyROff)); //Top left defined tool function 3, toggle pipe release key on button release
-	MapKey(&Joystick, H2R, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
-	MapKeyR(&Joystick, H2R, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
-    MapKeyR(&Joystick, H2U, DX36);
+	MapKey(&Joystick, H2U, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2U, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
+    MapKeyR(&Joystick, H2D, DX36);
 	//MapKey(&Joystick, S1, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
 	MapKey(&Joystick, S2, Lights); //lights key defined 
 	MapKey(&Joystick, S3, Strobes);
@@ -227,9 +237,9 @@ int TractorControlButtonsJoyA10R(){//keymaps for general Tractor usage
 	MapKey(&Joystick, H2D, EXEC(TopMiddleJoyR)); //Top middle defined main claw close, close front loader tool hold on neaded for sending multiple indiviual keypress
 	MapKeyR(&Joystick, H2D, EXEC(TopMiddleJoyROff)); //Top middle defined main claw close, close front loader tool release key on button release
 	MapKey(&Joystick, H2L, DX4); //Top left defined tool function 3, toggle pipe hold on neaded for sending multiple indiviual keypress
-	MapKey(&Joystick, H2R, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
-	MapKeyR(&Joystick, H2R, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
-    MapKeyR(&Joystick, H2U, DX4);
+	MapKey(&Joystick, H2U, EXEC(TopRightJoyR)); //Top right defined main claw open, open front loader tool hold on neaded for sending multiple indiviual keypress
+	MapKeyR(&Joystick, H2U, EXEC(TopRightJoyROff)); //Top right defined main claw open, open front loader tool release key on button release
+    MapKeyR(&Joystick, H2R, DX4);
 	//MapKey(&Joystick, S1, 0);// lockout for usage for joystick mode toggle live ingame. should not be assigned in game
 	MapKey(&Joystick, S2, Lights); //lights key defined 
 	MapKey(&Joystick, S3, Strobes);
@@ -277,8 +287,8 @@ int JoyAxisCurveSet(){
     printf("---Left Joystick Curves Set \xa") ;
     //Joystick Curves Right
     if (WarthogStick == 1){
-	   SetSCurve(&Joystick, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
-	   SetSCurve(&Joystick, JOYY, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
+	   SetSCurve(&Joystick, JOYX, 0,JSDeadZone,0,(JSCurve[JSProfile]/2),JSZoom[JSProfile]);
+	   SetSCurve(&Joystick, JOYY, 0,JSDeadZone,0,(JSCurve[JSProfile]/2),JSZoom[JSProfile]);
 	   }
 	else {
     SetSCurve(&T16000, JOYX, 0,JSDeadZone,0,JSCurve[JSProfile],JSZoom[JSProfile]);
